@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>消防中心</title>
+		<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<link rel="stylesheet" href="bigdataStyle1/css/common.css">
+		<link rel="stylesheet" href="bigdataStyle1/css/comon0.css">
+		<style>
+			.grid {
+				margin-top: 5%;
+				width: 80%;
+				height: 10px;
+				display: grid;
+				grid-template-columns: repeat(20, 1fr);
+				grid-column-gap: 14px;
+			}
+
+			.line {
+				position: relative;
+				width: 90%;
+				height: 7px;
+			}
+
+			.line::before,
+			.line::after {
+				content: '';
+				position: absolute;
+				width: 4.5rem;
+				height: 100%;
+				border-radius: 7px;
+				background-color: #FF0000;
+			}
+
+			.line::before {
+				animation: first-line ease-in-out 4s var(--delay) infinite alternate;
+			}
+
+			.line::after {
+				bottom: 0;
+				background-color: #B22222;
+				width: calc(80% - 10px);
+				animation: second-line ease-in-out 4s var(--delay) infinite alternate;
+			}
+
+			.line:nth-child(1) {
+				--delay: calc(-0.1s);
+			}
+
+
+			@keyframes first-line {
+				70% {
+					width: calc(80% - 10px);
+				}
+
+				100% {
+					background-color: #FF0000;
+				}
+			}
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var html = $(".wrap ul").html()
+			$(".wrap ul").append(html)
+			var ls = $(".wrap li").length / 2 + 1
+			i = 0
+			ref = setInterval(function() {
+				i++
+				if (i == ls) {
+					i = 1
+					$(".wrap ul").css({
+						marginTop: 0
+					})
+					$(".wrap ul").animate({
+						marginTop: -'.52' * i + 'rem'
+					}, 1000)
+				}
+				$(".wrap ul").animate({
+					marginTop: -'.52' * i + 'rem'
+				}, 1000)
+
+
+			}, 2400);
+
+
+
+			var html2 = $(".adduser ul").html()
+			$(".adduser ul").append(html2)
+			var ls2 = $(".adduser li").length / 2 + 1
+			a = 0
+			ref = setInterval(function() {
+				a++
+				if (a == ls2) {
+					a = 1
+					$(".adduser ul").css({
+						marginTop: 0
+					})
+					$(".adduser ul").animate({
+						marginTop: -'.5' * a + 'rem'
+					}, 800)
+				}
+				$(".adduser ul").animate({
+					marginTop: -'.5' * a + 'rem'
+				}, 800)
+
+
+			}, 4300);
+
+
+
+
+
+
+
+
+		})
+	</script>
+	<body style=''>
+		<div class="loading">
+			<div class="loadbox"> <img src="bigdataStyle1/images/loading.gif"> loading... </div>
+		</div>
+		<div class="head">
+			<h1>消防数据中心</h1>
+			<div class="weather"><span id="showTime"></span></div>
+			<script>
+				var t = null;
+				t = setTimeout(time, 1000);
+
+				function time() {
+					clearTimeout(t);
+					dt = new Date();
+					var y = dt.getFullYear();
+					var mt = dt.getMonth() + 1;
+					var day = dt.getDate();
+					var h = dt.getHours();
+					h = h > 9 ? h : "0" + h;
+					var m = dt.getMinutes();
+					m = m > 9 ? m : "0" + m;
+					var s = dt.getSeconds();
+					s = s > 9 ? s : "0" + s;
+					document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "日 - " + h + "时" + m + "分" + s + "秒";
+					t = setTimeout(time, 1000);
+				}
+			</script>
+		</div>
+		<div class="mainbox">
+			<ul class="clearfix">
+				<li style="width: 65%;">
+					<div class="boxall" style="height: 9.2rem">
+						<iframe src="http://10.10.3.35:8080" frameborder="no" border="0" marginwidth="0"
+							marginheight="0" scrolling="no" allowtransparency="yes" width="100%" height="102%"></iframe>
+					</div>
+				</li>
+				<li style="padding-left: 0;">
+					<div style="width: 49.2%;margin-right: 0.1rem" class="flo_l">
+						<div class="boxall" style="height: 3.55rem">
+							<div class="alltitle"><i class="iconfont icon-ziyuan"></i>  消防隐患</div>
+							<div class="sycm">
+								<div class="tit02"><span class="color_d8bb3e">报警数量</span></div>
+								<ul class="clearfix">
+									<li>
+										<h2 class="counter">1824</h2><span>本月报警数量</span>
+									</li>
+									<li>
+										<h2 class="counter">1920</h2><span>上月报警数量</span>
+									</li>
+									<li>
+										<h2 class="color_1a9eac"><span class="counter color_1a9eac">52</span>%</h2>
+										<span>环比增长</span>
+									</li>
+								</ul>
+
+							</div>
+							<div class="sycm">
+								<div class="tit02"><span class="color_d8bb3e">设备使用</span></div>
+								<ul class="clearfix">
+									<li>
+										<h2 class="counter">168</h2><span>运转正常</span>
+									</li>
+									<li>
+										<h2 class="counter">20</h2><span>运转异常</span>
+									</li>
+									<li>
+										<h2 class="color_1a9eac"><span class="counter color_1a9eac">12</span>%</h2>
+										<span>故障率</span>
+									</li>
+								</ul>
+
+							</div>
+							<div class="sycm">
+								<div class="tit02"><span class="color_d8bb3e">设备故障</span></div>
+								<ul class="clearfix">
+									<li>
+										<h2 class="counter">38</h2><span>运转正常</span>
+									</li>
+									<li>
+										<h2 class="counter">15</h2><span>运转异常</span>
+									</li>
+									<li>
+										<h2 class="color_1a9eac"><span class="counter color_1a9eac">48</span>%</h2>
+										<span>故障率</span>
+									</li>
+								</ul>
+
+							</div>
+
+
+							<div class="boxfoot"></div>
+						</div>
+
+					</div>
+					<div style="width: 49.2%;" class="flo_l">
+						<div class="boxall" style="height: 3.55rem">
+							<div class="alltitle"><i class="iconfont icon-anquan"></i>  消防安全</div>
+							<div class="sycm">
+								<div class="tit02"><span class="color_d8bb3e">日常巡查</span></div>
+								<div class="allnav rcxc" style="height: 1.1rem"></div>
+							</div>
+							<div class="sycm res">
+								<div class="tit02"><span class="color_d8bb3e">消防统计</span></div>
+								<div class="ani_circle space_around abs">
+									<div class="ani_circle_lie res">
+										<div class="ani_c"></div>
+									</div>
+									<div class="ani_circle_lie res">
+										<div class="ani_c"></div>
+									</div>
+								</div>
+								<div id="dwtj" class="space_around" style="height: 1rem;">
+									<div class="dttj_lie dttj_lie1"></div>
+									<div class="dttj_lie dttj_lie2"></div>
+								</div>
+
+							</div>
+
+
+							<div class="boxfoot"></div>
+						</div>
+
+					</div>
+					<div style="width: 100%;" class="flo_l">
+						<div class="boxall" style="height: 2.46rem">
+							<div class="alltitle"><i class="iconfont icon-baogao"></i>  消防安全报告</div>
+							<!-- <div class="tit02"><span class="color_d8bb3e">多维统计</span></div> -->
+                            <div class="allnav" style="height: 1.8rem" id="wxyg"></div>
+
+							<div class="boxfoot"></div>
+						</div>
+
+					</div>
+                    <div style="width: 49.2%;margin-right: 0.1rem" class="flo_l">
+						<div class="boxall" style="height: 3rem">
+							<div class="alltitle"><i class="iconfont icon-fenxi"></i>  分析研判</div>
+							<div class="sycm">
+								<!-- <div class="tit02"><span class="color_d8bb3e">报警趋势</span></div> -->
+							    <div class="allnav" style="height: 1.2rem" id="bjqs"></div>
+								<div id="questionId" class="main_top_left_top_con" style="height: 1.1rem;"></div>
+							</div>
+							<div class="boxfoot"></div>
+						</div>
+
+					</div>
+					<div style="width: 49.2%;" class="flo_l">
+						<div class="boxall" style="height: 3rem">
+							<div class="alltitle"><i class="iconfont icon-weibao"></i>  消防维保</div>
+							<div>
+								<div class="shdw_icon flo_l" style="width:25%"><i class="iconfont icon-danwei1" style="font-size: 65px;"></i><br /><span>社会单位</span></div>
+								<div class="allnav flo_r" style="height: 1.1rem;width: 72%;" id="echartsBar"></div>
+							</div>
+							<div style="height: 10px;clear: both;"></div>
+							<div>
+								<div class="shdw_icon flo_l" style="width:25%"><i class="iconfont icon-weibaoguize" style="font-size: 65px;"></i><br /><span>维保单位</span></div>
+								<div class="allnav flo_r" style="height: 1.1rem;width: 72%;" id="echartsBar2"></div>
+							</div>
+							<div class="boxfoot"></div>
+						</div>
+
+					</div>
+					
+				</li>
+			</ul>
+		</div>
+		<div class="boxall" style="height: 0.6rem;background-size: auto;margin: 0 0.1rem;font-size: 0.18rem;line-height: 0.28rem;">
+			<marquee behavior="alternate" direction="" style="color: #fff;"><i class="iconfont icon-jingbao1" style="font-size: 0.18rem;position: relative;top: -0.001rem;"></i>   最新报警信息：xxxxxxx 2021年12月31日 - 火警报警</marquee>
+		</div>
+		<div class="back"></div>
+		<div id="particles-js"><canvas class="particles-js-canvas-el" width="1920" height="879"
+				style="width: 100%; height: 100%;"></canvas></div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
+		<script type="text/javascript" src="bigdataStyle1/js/echarts-gl.min.js"></script>
+		<script language="JavaScript" src="bigdataStyle1/js/echarts-tool.js"></script>
+		<script type="text/javascript" src="bigdataStyle1/js/particles.min.js"></script>
+		<script language="JavaScript" src="bigdataStyle1/js/particles.js"></script>
+		<script type="text/javascript" src="bigdataStyle1/js/jquery.waypoints.min.js"></script>
+		<script type="text/javascript" src="bigdataStyle1/js/jquery.countup.min.js"></script>
+		<script type="text/javascript">
+			$('.counter').countUp();
+		</script>
+
+	</body>
+</html>
